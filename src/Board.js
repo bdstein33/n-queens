@@ -82,16 +82,14 @@
       return this.get(rowIndex).reduce(function(prevVal, curVal){
         return prevVal + curVal;
       }) > 1 ? true : false;
-
-      // return false; // fixme
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-
-      console.log(this.get(1));
-      // hasRowConflictAt(i)
-      return false; // fixme
+      var board = this;
+      return this.rows().reduce(function(prevVal, row, rowNum){
+        return prevVal || board.hasRowConflictAt(rowNum);
+      }, false);
     },
 
 
